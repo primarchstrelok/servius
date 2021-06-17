@@ -4,13 +4,14 @@ while test $# -gt 0; do
     -h|--help)
       echo "$package - attempt to serve file"
       echo " "
-      echo "$package [option] target-file"
+      echo "$package [option] target-file [-p (optional)] [port (optional)]"
       echo " "
       echo "options:"
       echo "-h, show help page"
       echo "-l, locally serve file"
       echo "-i, serve file over internet"
       echo "-d, host dedicated server"
+      echo "-p, specify a port otherwise default to 8000"
       exit 0
       ;;
     -l)
@@ -18,7 +19,13 @@ while test $# -gt 0; do
       zip -r $1.zip $1
       mkdir serve
       mv $1.zip serve
-      python3 -m http.server 8000 --directory serve/
+      if [$1 = "-p"]
+      shift
+      then
+        python3 -m http.server $1 --directory serve/
+      else
+        python3 -m http.server 8000 --directory serve/
+      fi
       shift
       ;;
     -i)
