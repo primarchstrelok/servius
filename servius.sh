@@ -19,6 +19,7 @@ while test $# -gt 0; do
       zip -r $1.zip $1
       mkdir serve
       mv $1.zip serve
+      shift
       if [$1 = "-p"]
       shift
       then
