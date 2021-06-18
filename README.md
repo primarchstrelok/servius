@@ -2,16 +2,20 @@
 
 ## Sending Files Locally:
 
-First you must add a rule to the firewall allowing outbound traffic on port 8000
+First you must add a rule to the firewall allowing outbound traffic on whichever port you wish to use (By default port 8000)
 On ubuntu:
 ```bash
-$ sudo ufw allow 8000
+$ sudo ufw allow <insert-port>
 ```
 Then you must target the directory or file that you want to serve to the network with the `-l` flag
 ```bash
-$ bash servius.sh -l target-file-location
+$ bash servius.sh -l <target-file-location>
 ```
-This will zip the targeted directory and host it on your ip, to access it on the clientside go to the server's IP on their web browser with port 8000 on the end of the URL, For example http://192.168.1.6:8000
+If you wish to specify a port for the file server add `-p <port>` to the end of the arguments
+```bash
+$ bash servius.sh -l <target-file-location> -p <port>
+```
+This will zip the targeted directory and host it on your ip, to access it on the clientside go to the server's IP on their web browser with the selected port on the end of the URL, For example http://192.168.1.6:8000
 
 Selecting the desired ZIP file will download it to the client's computer
 
@@ -19,10 +23,10 @@ Selecting the desired ZIP file will download it to the client's computer
 
 Target the directory or file with servius and the `-i` flag
 ```bash
-$ bash servius.sh -i target-file-location
+$ bash servius.sh -i <target-file-location>
 ```
 This will return a code phrase that can be recieved by a Croc on a Client. This will require the client to have Croc installed on their device. With Croc installed run:
 ```bash
-$ croc code-phrase
+$ croc <code-phrase>
 ```
 Then confirm that you want to download the file by selecting Y
