@@ -5,7 +5,7 @@
 First you must add a rule to the firewall allowing outbound traffic on whichever port you wish to use (By default port 8000)
 On ubuntu:
 ```bash
-$ sudo ufw allow <insert-port>
+$ sudo ufw allow <port>
 ```
 Then you must target the directory or file that you want to serve to the network with the `-l` flag
 ```bash
@@ -31,7 +31,7 @@ $ croc <code-phrase>
 ```
 Then confirm that you want to download the file by selecting Y
 
-## Sending Files from windows
+## Sending Files from Windows:
 
 First you will need to activate Windows Subsystems for Linux, This can be done in the Windows Features settings in control panel
 
